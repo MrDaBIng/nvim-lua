@@ -1,0 +1,5 @@
+require("core.packer")
+require("core.options")
+require("core.lsp-config")
+require("core.treesitter-config")
+require("core.nvimtree-config")
