@@ -165,4 +165,4 @@ require("neo-tree").setup({
     }
 })
 
-vim.cmd([[map tt :Neotree<cr>]])
+vim.keymap.set("n","tt",":Neotree<cr>", { noremap=true, silent=true, buffer=bufnr })

@@ -1,0 +1,20 @@
+vim.keymap.set("n","S",":w<cr>",{noremap=true, silent=true})
+
+vim.keymap.set("n","<leader>s","<c-w>j",{noremap=true, silent=true})
+vim.keymap.set("n","<leader>w","<c-w>k",{noremap=true, silent=true})
+vim.keymap.set("n","<leader>d","<c-w>l",{noremap=true, silent=true})
+vim.keymap.set("n","<leader>a","<c-w>h",{noremap=true, silent=true})
+
+vim.keymap.set("n","gb","<c-o>",{noremap=true, silent=true})
+-- bufferline
+vim.keymap.set("n","<leader>1",":BufferLineGoToBuffer 1<CR>",{noremap=true, silent=true})
+vim.keymap.set("n","<leader>2",":BufferLineGoToBuffer 2<CR>",{noremap=true, silent=true})
+vim.keymap.set("n","<leader>3",":BufferLineGoToBuffer 3<CR>",{noremap=true, silent=true})
+vim.keymap.set("n","<leader>4",":BufferLineGoToBuffer 4<CR>",{noremap=true, silent=true})
+vim.keymap.set("n","<leader>5",":BufferLineGoToBuffer 5<CR>",{noremap=true, silent=true})
+vim.keymap.set("n","<leader>6",":BufferLineGoToBuffer 6<CR>",{noremap=true, silent=true})
+vim.keymap.set("n","<leader>7",":BufferLineGoToBuffer 7<CR>",{noremap=true, silent=true})
+vim.keymap.set("n","<leader>8",":BufferLineGoToBuffer 8<CR>",{noremap=true, silent=true})
+vim.keymap.set("n","<leader>9",":BufferLineGoToBuffer 9<CR>",{noremap=true, silent=true})
+vim.keymap.set("n",">",":BufferLineCycleNext<CR>",{noremap=true, silent=true})
+vim.keymap.set("n","<",":BufferLineCyclePrev<CR>",{noremap=true, silent=true})
