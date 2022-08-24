@@ -11,6 +11,7 @@ vim.o.shiftwidth = 4
 vim.o.expandtab = true
 vim.o.smartindent = true
 vim.o.autoindent = true
+vim.o.scrolloff = 35
 
 vim.o.fileencoding = "utf-8"
 
