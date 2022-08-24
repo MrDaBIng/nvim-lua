@@ -18,7 +18,7 @@ end
 local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
+  require "lsp_signature".on_attach(signature_setup, bufnr)
 end
 
 local lsp_flags = {
@@ -35,3 +35,5 @@ require('lspconfig')['gopls'].setup{
     completeUnimported=true,
   }
 }
+
+require "lsp_signature".setup()
