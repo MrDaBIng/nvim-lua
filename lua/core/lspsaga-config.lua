@@ -1,4 +1,5 @@
 local saga = require 'lspsaga'
+local keymap = vim.keymap.set
 
 -- change the lsp symbol kind
 local kind = require('lspsaga.lspkind')
@@ -18,55 +19,57 @@ saga.init_lsp_saga({
   symbol_in_winbar = nil,
 })
 
-
 local bufopts = {
   noremap=true,
   silent=true,
   buffer=bufnr,
 }
 -- Mode(Normal/Insert/Visual),"key",action,opts)
---vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-vim.keymap.set('n', 'gD', vim.lsp.buf.definition, bufopts)
---vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-vim.keymap.set('n', '<space>wl', function()
-  print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-end, bufopts)
-vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
---vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
---vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
+-- Lsp finder find the symbol definition implement reference
+-- when you use action in finder like open vsplit then you can
+-- use <C-t> to jump back
+keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", { silent = true })
 
-vim.keymap.set("n", "gh", require("lspsaga.finder").lsp_finder, { silent = true })
-local action = require("lspsaga.codeaction")
-vim.keymap.set("n", "<leader>ca", action.code_action, { silent = true })
-vim.keymap.set("v", "<leader>ca", function()
-    vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-U>", true, false, true))
-    action.range_code_action()
+-- Code action
+keymap("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", { silent = true })
+keymap("v", "<leader>ca", "<cmd><C-U>Lspsaga range_code_action<CR>", { silent = true })
+
+-- Rename
+keymap("n", "gr", "<cmd>Lspsaga rename<CR>", { silent = true })
+
+-- Definition preview
+keymap("n", "gd", "<cmd>Lspsaga preview_definition<CR>", { silent = true })
+
+-- Show line diagnostics
+keymap("n", "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>", { silent = true })
+
+-- Show cursor diagnostic
+keymap("n", "<leader>cd", "<cmd>Lspsaga show_cursor_diagnostics<CR>", { silent = true })
+
+-- Diagnsotic jump can use `<c-o>` to jump back
+keymap("n", "[e", "<cmd>Lspsaga diagnostic_jump_next<CR>", { silent = true })
+keymap("n", "]e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { silent = true })
+
+-- Only jump to error
+keymap("n", "[E", function()
+  require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
+end, { silent = true })
+keymap("n", "]E", function()
+  require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
 end, { silent = true })
 
-vim.keymap.set("n", "K", require("lspsaga.hover").render_hover_doc, { silent = true })
+-- Outline
+keymap("n","<leader>o", "<cmd>LSoutlineToggle<CR>",{ silent = true })
+
+-- Hover Doc
+keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
+
 local action = require("lspsaga.action")
--- scroll down hover doc or scroll in definition preview
+-- scroll in hover doc or  definition preview window
 vim.keymap.set("n", "<C-f>", function()
     action.smart_scroll_with_saga(1)
 end, { silent = true })
--- scroll up hover doc
+-- scroll in hover doc or  definition preview window
 vim.keymap.set("n", "<C-b>", function()
     action.smart_scroll_with_saga(-1)
 end, { silent = true })
--- show signature help
-vim.keymap.set("n", "gs", require("lspsaga.signaturehelp").signature_help, { silent = true })
--- rename
-vim.keymap.set("n", "grn", require("lspsaga.rename").lsp_rename, { silent = true })
--- preview definition
-vim.keymap.set("n", "gd", require("lspsaga.definition").preview_definition, { silent = true })
-
---diagnostic
-vim.keymap.set("n", "<leader>cd", require("lspsaga.diagnostic").show_line_diagnostics, { silent = true })
-vim.keymap.set("n", "[e", require("lspsaga.diagnostic").goto_prev, { silent = true })
-vim.keymap.set("n", "]e", require("lspsaga.diagnostic").goto_next, { silent = true })
