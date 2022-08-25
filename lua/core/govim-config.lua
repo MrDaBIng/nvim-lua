@@ -7,3 +7,5 @@ require('go').setup({
     dap_debug_vt = true, -- set to true to enable dap virtual text
     icons = {breakpoint = '🔴', currentpos = '👉'}
 })
+vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('go.format').gofmt() ]], false)
+
