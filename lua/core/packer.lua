@@ -58,28 +58,29 @@ return require('packer').startup(function()
   })
   
   -- dess my vim
-  use({
-    'projekt0n/github-nvim-theme',
-    config = function()
-      require('github-theme').setup({
-        -- ...
-        theme_style = "dark",
-        function_style = "italic",
-        sidebars = {"qf", "vista_kind", "terminal", "packer"},
-        
-        -- Change the "hint" color to the "orange" color, and make the "error" color bright red
-        colors = {hint = "orange", error = "#ff0000"},
-        overrides = function(c)
-          return {
-            htmlTag = {fg = c.red, bg = "#282c34", sp = c.hint, style = "underline"},
-            DiagnosticHint = {link = "LspDiagnosticsDefaultHint"},
-            -- this will remove the highlight groups
-            TSField = {},
-          }
-        end
-      })
-    end
-  })
+  -- use({
+  --   'projekt0n/github-nvim-theme',
+  --   config = function()
+  --     require('github-theme').setup({
+  --       -- ...
+  --       theme_style = "dark",
+  --       function_style = "italic",
+  --       sidebars = {"qf", "vista_kind", "terminal", "packer"},
+  --       
+  --       -- Change the "hint" color to the "orange" color, and make the "error" color bright red
+  --       colors = {hint = "orange", error = "#ff0000"},
+  --       overrides = function(c)
+  --         return {
+  --           htmlTag = {fg = c.red, bg = "#282c34", sp = c.hint, style = "underline"},
+  --           DiagnosticHint = {link = "LspDiagnosticsDefaultHint"},
+  --           -- this will remove the highlight groups
+  --           TSField = {},
+  --         }
+  --       end
+  --     })
+  --   end
+  -- })
+  use { "catppuccin/nvim", as = "catppuccin" }
   use 'akinsho/bufferline.nvim'
   use({
    "akinsho/nvim-bufferline.lua",
@@ -98,7 +99,7 @@ return require('packer').startup(function()
     config = function()
         require('Comment').setup()
     end
-  } 
+  }
   -- file explorer
   -- use ({
   --   "nvim-neo-tree/neo-tree.nvim",

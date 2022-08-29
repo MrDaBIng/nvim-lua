@@ -1,9 +1,10 @@
 require("nvim-tree").setup({
+  open_on_tab = false,
   view = {
     mappings = {
       list = {
-        { key = "l", action = "edit" },
-        { key = " ", action = "toggle_mark" },
+        { key = "-", action = "split" },
+        { key = "\\", action = "vsplit" },
       },
     },
   },
