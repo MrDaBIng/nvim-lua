@@ -26,4 +26,15 @@ vim.o.cursorline = true
 vim.o.mouse = 'a'
 vim.g.mapleader = " "
 
+-- vim.opt.fillchars:append({
+--     horiz = '━',
+--     horizup = '┻',
+--     horizdown = '┳',
+--     vert = '┃',
+--     vertleft = '┫',
+--     vertright = '┣',
+--     verthoriz = '╋',
+-- })
+vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
+vim.cmd [[colorscheme catppuccin]]
 -- vim.cmd('colorscheme gruvbox-material')
