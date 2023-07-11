@@ -18,13 +18,17 @@ vim.o.fileencoding = "utf-8"
 vim.o.splitbelow = true
 vim.o.splitright = true
 
-vim.o.termguicolors = true
 vim.o.wrap = false
 
 vim.o.termguicolors = true
 vim.o.cursorline = true
 vim.o.mouse = 'a'
 vim.g.mapleader = " "
+
+vim.o.cursorcolumn = true
+vim.o.clipboard = 'unnamedplus'
+-- vim.highlight.create('ColorColumn', {ctermbg=0, guibg=lightgrey}, false)
+-- vim.api.nvim_set_hl(0 , 'ColorColumn', {fg="#DADBDD",bg="#DADBDD",})
 
 -- vim.opt.fillchars:append({
 --     horiz = '━',
@@ -36,5 +40,5 @@ vim.g.mapleader = " "
 --     verthoriz = '╋',
 -- })
 vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
-vim.cmd [[colorscheme catppuccin]]
+-- vim.cmd [[colorscheme catppuccin]]
 -- vim.cmd('colorscheme gruvbox-material')

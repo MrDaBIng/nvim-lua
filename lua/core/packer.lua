@@ -25,16 +25,15 @@ return require('packer').startup(function()
   use "williamboman/nvim-lsp-installer"
   use 'ray-x/lsp_signature.nvim'
   use("windwp/nvim-autopairs") -- auto pairs
-  use({
-    "glepnir/lspsaga.nvim", --- lsp enhance
-    branch = "main",
-    config = function()
-        local saga = require("lspsaga")
+  use {
+    "williamboman/mason.nvim",
+    run = ":MasonUpdate", -- :MasonUpdate updates registry contents
+  }
+  use("williamboman/mason-lspconfig.nvim")
 
-        saga.init_lsp_saga({
-            -- your configuration
-        })
-    end,
+  use({
+    "glepnir/lspsaga.nvim",
+    branch = "main",
   })
   use {'mattn/vim-sonictemplate',
     cmd = 'Template',
@@ -111,11 +110,13 @@ return require('packer').startup(function()
   --   }
   -- })
   use ({
-    'kyazdani42/nvim-tree.lua',
+    'nvim-tree/nvim-tree.lua',
     -- requires = {
     --   'kyazdani42/nvim-web-devicons', -- optional, for file icons
     -- },
   })
   use "nvim-telescope/telescope.nvim"
+
+  use 'Dhanus3133/Leetbuddy.nvim'
 end)
 
