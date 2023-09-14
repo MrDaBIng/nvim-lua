@@ -25,7 +25,7 @@ local plugins = {
   require('config.plugins.govim'),
   require('config.plugins.completecode').config,
   require('config.plugins.comment'),
-  require('config.plugins.telescope'),
+  require('config.plugins.telescope').config,
   require('config.plugins.dap'),
   require('config.plugins.lspsaga'),
   require('config.plugins.utils').config,

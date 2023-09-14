@@ -19,6 +19,7 @@ M.config = {
             )
         end,
     },
+    { "folke/neodev.nvim", opts = {} },
 }
 
 

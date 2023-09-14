@@ -20,6 +20,9 @@ return {
         require("nvim-tree").setup ({
             ---
             on_attach = nvimtree_on_attach,
+            update_focused_file = {
+                 enable = true,
+            },
             ---
           })
     end
