@@ -4,10 +4,10 @@ M.config = {
     "hrsh7th/nvim-cmp",
     dependencies = {
         {"hrsh7th/cmp-buffer"},
-		    {"hrsh7th/cmp-path"},
-		    {"hrsh7th/cmp-nvim-lsp"},
-		    {"hrsh7th/cmp-nvim-lua"},
-		    {"hrsh7th/cmp-calc"},
+	{"hrsh7th/cmp-path"},
+	{"hrsh7th/cmp-nvim-lsp"},
+	{"hrsh7th/cmp-nvim-lua"},
+	{"hrsh7th/cmp-calc"},
         {'saadparwaiz1/cmp_luasnip'}, -- Snippets source for nvim-cmp
         {'L3MON4D3/LuaSnip'}, -- Snippets plugin 
         {"windwp/nvim-autopairs"} -- auto pairs
