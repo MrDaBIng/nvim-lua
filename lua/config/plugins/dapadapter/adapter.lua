@@ -10,7 +10,7 @@ M = {
             options = {
                 initialize_timeout_sec = 60
             }
-        }
+        } 
     end
 }
 

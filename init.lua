@@ -14,8 +14,13 @@
 -- require("core.colorscheme-config")
 -- require("core.leetcode")
 --
-
 require('config.lazycore')
-require('config.options')
-require('config.keymaps')
+if vim.g.vscode then
+    -- VSCode extension
+    require('config.vscode')
+else
+    -- ordinary Neovim
+    require('config.options')
+    require('config.keymaps')
+end
 

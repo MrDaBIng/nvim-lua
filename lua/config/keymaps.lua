@@ -53,10 +53,10 @@ local mappings = {
     {from = "gi", to = ":GoImpl<CR>"},
 
     --- telescope
-    {from = "<Leader>sf", to = require("telescope.builtin").find_files},
-    {from = "<Leader>sg", to = require("telescope.builtin").live_grep},
-    {from = "<Leader>sb", to = require("telescope.builtin").buffers},
-    {from = "<Leader>sh", to = require("telescope.builtin").help_tags},
+    {from = "<Leader>ff", to = require("telescope.builtin").find_files},
+    {from = "<Leader>fg", to = require("telescope.builtin").live_grep},
+    {from = "<Leader>fb", to = require("telescope.builtin").buffers},
+    {from = "<Leader>fh", to = require("telescope.builtin").help_tags},
     -- {from = "<Leader>sp", to = require("telescope").extensions.media_files.media_files},
 
     -- dap

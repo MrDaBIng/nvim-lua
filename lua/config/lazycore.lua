@@ -16,6 +16,7 @@ local opts = {
         colorscheme = {"tokyonight-storm"}
     }
 }
+
 local plugins = {
   require('config.plugins.dress'),
   require('config.plugins.treesitter'),
@@ -29,8 +30,14 @@ local plugins = {
   require('config.plugins.dap'),
   require('config.plugins.lspsaga'),
   require('config.plugins.utils').config,
+  require('config.plugins.leap'),
 }
 
-require("lazy").setup(plugins, opts)
+if vim.g.vscode then
+    plugins = {
+          require("config.plugins.vscode")
+    }
+end
 
+require("lazy").setup(plugins, opts)
 
