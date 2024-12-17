@@ -29,25 +29,38 @@ return {
         },
         lazy = false, -- make sure we load this during startup if it is your main colorscheme
         priority = 1000, -- make sure to load this before all the other start plugins
-        config = function()
-          -- load the colorscheme here
-          -- local tokyonightColors = require("tokyonight.colors")
-          require("tokyonight").setup({
+        opts = {
             style = "storm",
             transparent = true,
-            styles = {
-                comments = {},
-                keywords = {},
-                functions = {},
-                variables = {},
-                on_colors = function(colors)
-                    colors.hint = colors.bg
-                    colors.error = "ff0000"
-                end,
-            },
-          })
-          vim.cmd([[colorscheme tokyonight-storm]])
+            -- terminal_colors = true,
+            on_colors = function(colors)
+                colors.hint = colors.bg
+                -- colors.error = "ff0000"
+            end,
+        },
+        config = function ()
+           vim.cmd[[colorscheme tokyonight]]
         end,
+        -- config = function()
+        --   -- load the colorscheme here
+        --   -- local tokyonightColors = require("tokyonight.colors")
+        --   require("tokyonight").setup({
+        --     style = "storm",
+        --     transparent = true,
+        --     terminal_colors = true,
+        --     styles = {
+        --         comments = {},
+        --         keywords = {},
+        --         functions = {},
+        --         variables = {},
+        --         on_colors = function(colors)
+        --             -- colors.hint = colors.bg
+        --             -- colors.error = "ff0000"
+        --         end,
+        --     },
+        --   })
+        --   -- vim.cmd[[colorscheme tokyonight]]
+        -- end,
     },
     {
         "lukas-reineke/indent-blankline.nvim",
