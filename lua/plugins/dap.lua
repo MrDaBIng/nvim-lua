@@ -66,7 +66,7 @@ return {
         vim.fn.sign_define('DapBreakpoint', {text = '🔴', texthl='', linehl='', numhl=''})
         vim.fn.sign_define('DapStopped', {text = '👉', texthl = '', linehl = '', numhl = ''})
 
-        local adapter = require('config.plugins.dapadapter.adapter')
+        local adapter = require('plugins.dapadapter.adapter')
         adapter.delve(dap)
     end
 }

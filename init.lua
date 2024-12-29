@@ -17,10 +17,10 @@
 require('config.lazycore')
 if vim.g.vscode then
     -- VSCode extension
-    require('config.vscode')
+    require('config.options.vscode')
 else
     -- ordinary Neovim
-    require('config.options')
-    require('config.keymaps')
+    require('config.options.nevim')
+    require('config.keymap')
 end
 

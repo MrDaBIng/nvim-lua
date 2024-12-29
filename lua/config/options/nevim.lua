@@ -22,11 +22,11 @@ opt.splitright = true
 opt.wrap = false
 opt.termguicolors = true
 opt.cursorline = true
-opt.mouse = 'a'
+opt.mouse = "a"
 opt.exrc = true
 
 opt.cursorcolumn = true
-opt.clipboard = 'unnamedplus'
+opt.clipboard = "unnamedplus"
 -- vim.highlight.create('ColorColumn', {ctermbg=0, guibg=lightgrey}, false)
 -- vim.api.nvim_set_hl(0 , 'ColorColumn', {fg="#DADBDD",bg="#DADBDD",})
 
@@ -45,4 +45,3 @@ global.mapleader = " "
 global.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
 -- vim.cmd [[colorscheme catppuccin]]
 -- vim.cmd('colorscheme gruvbox-material')
-

@@ -50,8 +50,8 @@ M.config = {
                 M.lspsignature.on_attach(signature_setup, bufnr)
             end
 
-            require('config.plugins.lsp.gopls').setup(lspconfig, goOnattach ,lsp)
-            require('config.plugins.lsp.luals').setup(lspconfig, luaOnAttach, lsp)
+            require('plugins.lsp.gopls').setup(lspconfig, goOnattach ,lsp)
+            require('plugins.lsp.luals').setup(lspconfig, luaOnAttach, lsp)
         end
     },
 }
