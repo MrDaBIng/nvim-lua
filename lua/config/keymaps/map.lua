@@ -189,6 +189,14 @@ local mappings = {
 	-- { mode = { "n", "t" }, from = "<A-d>", to = "<cmd>Lspsaga term_toggle<CR>" },
 }
 
+local status, privates = pcall(require, 'keymaps.privates')
+if status then
+  for _, value in ipairs(privates.keymap) do
+	mappings = table.insert(mappings, value)
+  end
+end
+
+
 local wk = require("which-key")
 local map_n = {}
 for _, v in ipairs(mappings) do
