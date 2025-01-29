@@ -28,7 +28,7 @@ local mappings = {
 	-- { from = "<leader>6", to = ":BufferLineGoToBuffer 6<CR>" },
 	-- { from = "<leader>7", to = ":BufferLineGoToBuffer 7<CR>" },
 
-    -- { from = "<leader>8", to = ":BufferLineGoToBuffer 8<CR>" },
+	-- { from = "<leader>8", to = ":BufferLineGoToBuffer 8<CR>" },
 	-- { from = "<leader>9", to = ":BufferLineGoToBuffer 9<CR>" },
 	-- { from = "<leader>$", to = ":BufferLineGoToBuffer -1<CR>" },
 	{ from = ">", to = ":BufferLineCycleNext<CR>", desc = "Cycle Buffer Next" },
@@ -188,6 +188,13 @@ local mappings = {
 	-- { mode = mode_nv, from = "<leader>ca", to = "<cmd>Lspsaga code_action<CR>" },
 	-- { mode = { "n", "t" }, from = "<A-d>", to = "<cmd>Lspsaga term_toggle<CR>" },
 }
+
+local status, privates = pcall(require, "keymaps.privates")
+if status then
+	for _, value in ipairs(privates.keymap) do
+		mappings = table.insert(mappings, value)
+	end
+end
 
 local wk = require("which-key")
 local map_n = {}

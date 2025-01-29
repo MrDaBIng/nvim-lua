@@ -73,3 +73,7 @@ local code_debug = {
 }
 
 wk.add({ file, buffer, code, code_debug })
+local status, privates = pcall(require, "keymaps.privates")
+if status then
+		wk.add(privates.whichkey)
+end
