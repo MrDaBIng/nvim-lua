@@ -1,3 +1,9 @@
+local private_plug = {}
+local status, _private_plugs = pcall(require, 'plugins.privates')
+if status then
+  private_plug = _private_plugs.config
+end
+
 local M = {
   require('plugins.dress'),
   require('plugins.dress'),
@@ -11,14 +17,14 @@ local M = {
   require('plugins.dap'),
   require('plugins.lspsaga'),
   require('plugins.utils').config,
-  require('plugins.leap'),
+  require('plugins.motion').config,
   require('plugins.whichkey').config,
   require('plugins.formatter').config,
-  require('plugins.orgmode').config,
+  require('plugins.notebook').config,
+  require('plugins.multicursors'),
+  private_plug,
+
 }
-
-for key, value in pairs(require("plugins.private.config")) do
-   M = table.insert(M,value)
-end
-
+-- local private_plug = require("config.plugins.privates")
+-- M = table.insert(M,private_plug)
 return M

@@ -23,4 +23,3 @@ else
     require('config.options.nevim')
     require('config.keymap')
 end
-

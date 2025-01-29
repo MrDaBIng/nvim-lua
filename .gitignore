@@ -1,2 +1,1 @@
-lua/config/plugins/private.lua
-lua/plugins/private/**
+**/privates.lua

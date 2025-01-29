@@ -20,12 +20,29 @@ M.config = {
 	-- 		-- })
 	-- 	end,
 	-- },
-	{
-		"nvim-neorg/neorg",
-		lazy = false, -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
-		version = "*", -- Pin Neorg to the latest stable release
-		config = true,
-	},
+	-- {
+	-- 	"nvim-neorg/neorg",
+	-- 	lazy = false, -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
+	-- 	ft = "norg",
+	-- 	version = "*", -- Pin Neorg to the latest stable release
+	-- 	config = true,
+	-- 	run = ":Neorg sync-parsers",
+	-- 	opts = {
+	-- 		load = {
+	-- 			["core.defaults"] = {},
+	-- 			["core.concealer"] = {},
+	-- 			["core.dirman"] = {
+	-- 				config = {
+	-- 					workspaces = {
+	-- 						notes = "~/Documents/neoorg/",
+	-- 					},
+	-- 					default_workspace = "notes",
+	-- 					index = "index.norg",
+	-- 				},
+	-- 			},
+	-- 		},
+	-- 	},
+	-- },
 }
 
 return M
