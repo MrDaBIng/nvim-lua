@@ -1,59 +1,71 @@
 local M = {}
 
 M.config = {
-    {
-        "VonHeikemen/lsp-zero.nvim",
-        branch = 'v2.x',
-        dependencies = {
-            -- LSP Support
-            {'neovim/nvim-lspconfig'},             -- Required
-            {'williamboman/mason.nvim'},           -- Optional
-            {'williamboman/mason-lspconfig.nvim'}, -- Optional
-        
-            -- Autocompletion
-            {'hrsh7th/nvim-cmp'},     -- Required
-            {'hrsh7th/cmp-nvim-lsp'}, -- Required
-            {'L3MON4D3/LuaSnip'},     -- Required
-            {
-                'ray-x/lsp_signature.nvim',
-                config = function ()
-                    M.lspsignature =  require("lsp_signature")
-                    M.lspsignature.setup({
-                        bind = true, -- This is mandatory, otherwise border config won't get registered.
-                        handler_opts = {
-                          border = "rounded"
-                        },
-                        doc_lines = 1,
-                        hint_enable = false
-                    })
-                end
-            }
-        },
-        config = function ()
-            local lspconfig = require('lspconfig')
-            local lsp = require('lsp-zero').preset({})
-            lsp.ensure_installed({
-				'lua_ls',
-				'gopls',
-				'jsonls',
-                'bashls',
+	{
+		"VonHeikemen/lsp-zero.nvim",
+		branch = "v4.x",
+		dependencies = {
+			-- LSP Support
+			{ "neovim/nvim-lspconfig" }, -- Required
+			{ "williamboman/mason.nvim" }, -- Optional
+			{ "williamboman/mason-lspconfig.nvim" }, -- Optional
+
+			-- Autocompletion
+			{ "hrsh7th/nvim-cmp" }, -- Required
+			{ "hrsh7th/cmp-nvim-lsp" }, -- Required
+			{ "L3MON4D3/LuaSnip" }, -- Required
+			{
+				"ray-x/lsp_signature.nvim",
+				config = function()
+					M.lspsignature = require("lsp_signature")
+					M.lspsignature.setup({
+						bind = true, -- This is mandatory, otherwise border config won't get registered.
+						handler_opts = {
+							border = "rounded",
+						},
+						doc_lines = 1,
+						hint_enable = false,
+					})
+				end,
+			},
+		},
+		config = function()
+			local lspconfig = require("lspconfig")
+			local lsp = require("lsp-zero").preset({})
+			lsp.ensure_installed({
+				"lua_ls",
+				"gopls",
+				"jsonls",
+				"bashls",
 			})
-            lsp.on_attach(function(client, bufnr)
-                lsp.default_keymaps({buffer = bufnr})
-            end)
-            
-            local goOnattach = function (client, bufnr)
-                M.lspsignature.on_attach(signature_setup, bufnr)
-            end
+			lsp.on_attach(function(client, bufnr)
+				lsp.default_keymaps({ buffer = bufnr })
+			end)
 
-            local luaOnAttach = function (client, bufnr)
-                M.lspsignature.on_attach(signature_setup, bufnr)
-            end
+			local goOnattach = function(client, bufnr)
+				M.lspsignature.on_attach(signature_setup, bufnr)
+			end
 
-            require('plugins.lsp.gopls').setup(lspconfig, goOnattach ,lsp)
-            require('plugins.lsp.luals').setup(lspconfig, luaOnAttach, lsp)
-        end
-    },
+			local luaOnAttach = function(client, bufnr)
+				M.lspsignature.on_attach(signature_setup, bufnr)
+			end
+
+			require("plugins.lsp.gopls").setup(lspconfig, goOnattach, lsp)
+			require("plugins.lsp.luals").setup(lspconfig, luaOnAttach, lsp)
+		end,
+	},
+	{
+		"neovim/nvim-lspconfig",
+		dependencies = { "saghen/blink.cmp" },
+		config = function(_, opts)
+			local lspconfig_defaults = require("lspconfig").util.default_config
+			lspconfig_defaults.capabilities = vim.tbl_deep_extend(
+				"force",
+				lspconfig_defaults.capabilities,
+				require("blink.cmp").get_lsp_capabilities()
+			)
+		end,
+	},
 }
 
 -- M.config = {
@@ -68,7 +80,7 @@ M.config = {
 --         vim.g.lsp_zero_extend_lspconfig = 0
 --       end,
 --     },
-  
+
 --     -- Autocompletion
 --     {
 --       'hrsh7th/nvim-cmp',
@@ -80,11 +92,11 @@ M.config = {
 --         -- Here is where you configure the autocompletion settings.
 --         local lsp_zero = require('lsp-zero')
 --         lsp_zero.extend_cmp()
-  
+
 --         -- And you can configure cmp even more, if you want to.
 --         local cmp = require('cmp')
 --         local cmp_action = lsp_zero.cmp_action()
-  
+
 --         cmp.setup({
 --           formatting = lsp_zero.cmp_format({details = true}),
 --           mapping = cmp.mapping.preset.insert({
@@ -102,7 +114,7 @@ M.config = {
 --         })
 --       end
 --     },
-  
+
 --     -- LSP
 --     {
 --       'neovim/nvim-lspconfig',
@@ -115,13 +127,13 @@ M.config = {
 --         -- This is where all the LSP shenanigans will live
 --         local lsp_zero = require('lsp-zero')
 --         lsp_zero.extend_lspconfig()
-  
+
 --         lsp_zero.on_attach(function(client, bufnr)
 --           -- see :help lsp-zero-keybindings
 --           -- to learn the available actions
 --           lsp_zero.default_keymaps({buffer = bufnr})
 --         end)
-  
+
 --         -- (Optional) Configure lua language server for neovim
 --         local lua_opts = lsp_zero.nvim_lua_ls()
 --         require('lspconfig').lua_ls.setup(lua_opts)
