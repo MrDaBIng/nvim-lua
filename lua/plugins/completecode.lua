@@ -23,10 +23,10 @@ local blink_cmp_extension = {
 }
 
 local blink_cmp = {
-    {
-       "windwp/nvim-autopairs", -- auto pairs
-        opts = {},
-    },
+	{
+		"windwp/nvim-autopairs", -- auto pairs
+		opts = {},
+	},
 	{
 		"saghen/blink.compat",
 		-- use the latest release, via version = '*', if you also use the latest release for blink.cmp
