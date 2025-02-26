@@ -6,6 +6,7 @@ return {
 			"neovim/nvim-lspconfig",
 			"nvim-treesitter/nvim-treesitter",
 		},
+        ft = { 'go', 'gomod', 'gosum', 'gotmpl', 'gohtmltmpl', 'gotexttmpl' },
 		config = function()
 			require("go").setup({})
 
@@ -19,7 +20,6 @@ return {
 			})
 		end,
         event = {"CmdlineEnter"},
-        ft = {"go", 'gomod'},
 	}
 }
 

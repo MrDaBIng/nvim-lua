@@ -1,10 +1,13 @@
 local mode_nv = { "n", "v" }
+local mode_n = { "n" }
 local mode_v = { "v" }
 local mode_i = { "i" }
 
 --local vimtree = require "nvim-tree.api"
 
 local mappings = {
+	{ mode = mode_i, to = "<Esc>", from = "jk" },
+	{ mode = { "t" }, to = "<C-\\><C-n>", from = "jk" },
 	-- { from = "S", to = ":w<cr>" },
 	-- { from = "gb", to = "<c-o>" },
 	-- window
@@ -40,10 +43,10 @@ local mappings = {
 	-- { from = "<leader>bc", to = ":BufferLinePickClose<CR>" },
 
 	-- move cursor
-	{ mode = mode_i, from = "<C-h>", to = "<Left>" },
-	{ mode = mode_i, from = "<C-j>", to = "<Down>" },
-	{ mode = mode_i, from = "<C-k>", to = "<Up>" },
-	{ mode = mode_i, from = "<C-l>", to = "<Right>" },
+	-- { mode = mode_i, from = "<C-h>", to = "<Left>" },
+	-- { mode = mode_i, from = "<C-j>", to = "<Down>" },
+	-- { mode = mode_i, from = "<C-k>", to = "<Up>" },
+	-- { mode = mode_i, from = "<C-l>", to = "<Right>" },
 	{ mode = mode_i, from = "<A-w>", to = "<S-Left>" },
 	{ mode = mode_i, from = "<A-b>", to = "<S-Right>" },
 	{ mode = mode_i, from = "<C-a>", to = "<Home>" },
